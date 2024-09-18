@@ -1,5 +1,6 @@
-from .models import Product
 from rest_framework import serializers
+
+from .models import Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -9,10 +10,14 @@ class ProductSerializer(serializers.ModelSerializer):
 
     def validate_name(self, value):
         if not value.strip():
-            return serializers.ValidationError("Название продукта не может быть пустым.")
+            return serializers.ValidationError(
+                "Название продукта не может быть пустым."
+            )
         return value
 
     def validate_price(self, value):
         if value <= 0:
-            return serializers.ValidationError("Цена должна быть положительным числом.")
+            return serializers.ValidationError(
+                "Цена должна быть положительным числом."
+            )
         return value

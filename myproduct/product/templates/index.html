@@ -5,6 +5,48 @@
       <title>Add Product</title>
       {% load static %}
       <script src="{% static 'js/form.js' %}" defer></script>
+      <style>
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+          background-color: #f4f4f4;
+        }
+        form {
+          background-color: orange;
+          padding: 25px;
+          border-radius: 10px;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          width: 300px;
+          text-align: left;
+        }
+        label {
+          font-weight: bold;
+          margin-bottom: 10px;
+          display: block;
+          color: white
+        }
+        button {
+          width: 100%;
+          padding: 10px;
+          background-color: #FF8C00;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+        }
+        th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #FF8C00;
+      }
+      </style>
   </head>
     <body>
       <main>
@@ -19,12 +61,25 @@
             </p>
             <p>
               <label for="price">Price</label>
-              <input type="number" id="price" name="product_price" required>
+              <input type="number" id="price" name="product_price" step="0.01" required>
             </p>
             <p>
             <button type="submit">Submit</button>
             </p>
         </form>
+
+        <table id="productTable" style="display: none; width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="productTableBody">
+
+            </tbody>
+        </table>
       </main>
     </body>
 </html>
